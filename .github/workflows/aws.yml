@@ -68,3 +68,13 @@ jobs:
           service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           wait-for-service-stability: true
+  load-test:
+    name: load-test-jmeter
+    runs-on: ubuntu-latest
+    steps:
+      - name: JMeter Test
+        uses: QAInsights/PerfAction@v1.0
+        with:
+          uses: ./
+          test-plan-path: TestPlans/S01_Soitec/soitec.jmx
+          args: "-l"
